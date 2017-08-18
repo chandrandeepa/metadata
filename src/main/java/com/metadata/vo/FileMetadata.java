@@ -1,14 +1,24 @@
 package com.metadata.vo;
 
+import javax.persistence.*;
+
 /**
  * Created by Deepa on 8/17/2017.
  */
+@Entity
+@Table(name = "FILE_METADATA")
 public class FileMetadata {
 
+    @Id
+    @Column(name = "METADATA_ID")
     private String metadataId;
+    @Column(name = "KEY")
     private String key;
+    @Column(name = "VALUE")
     private String value;
-    private File file;
+    @ManyToOne
+    @JoinColumn(name = "FILE_ID")
+    private FileInfo fileInfo;
 
     public String getMetadataId() {
         return metadataId;
@@ -34,11 +44,11 @@ public class FileMetadata {
         this.value = value;
     }
 
-    public File getFile() {
-        return file;
+    public FileInfo getFileInfo() {
+        return fileInfo;
     }
 
-    public void setFile(File file) {
-        this.file = file;
+    public void setFileInfo(FileInfo fileInfo) {
+        this.fileInfo = fileInfo;
     }
 }

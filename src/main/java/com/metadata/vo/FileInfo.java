@@ -1,15 +1,23 @@
 package com.metadata.vo;
 
+import javax.persistence.*;
 import java.util.List;
 
 /**
  * Created by Deepa on 8/17/2017.
  */
-public class File {
+@Entity
+@Table(name = "FILE_INFO")
+public class FileInfo {
 
+    @Id
+    @Column(name = "FILE_ID")
     private String fileId;
+    @Column(name = "FILE_NAME")
     private String fileName;
+    @Column(name = "FILE_CONTENT")
     private byte[] fileContent;
+    @OneToMany(mappedBy = "fileInfo", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private List<FileMetadata> metadataList;
 
     public String getFileId() {
