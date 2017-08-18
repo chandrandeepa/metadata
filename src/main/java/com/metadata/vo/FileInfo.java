@@ -7,25 +7,21 @@ import java.util.List;
  * Created by Deepa on 8/17/2017.
  */
 @Entity
-@Table(name = "FILE_INFO")
 public class FileInfo {
 
     @Id
-    @Column(name = "FILE_ID")
-    private String fileId;
-    @Column(name = "FILE_NAME")
+    private String fileid;
     private String fileName;
-    @Column(name = "FILE_CONTENT")
     private byte[] fileContent;
-    @OneToMany(mappedBy = "fileInfo", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "fileInfo", cascade = CascadeType.ALL)
     private List<FileMetadata> metadataList;
 
-    public String getFileId() {
-        return fileId;
+    public String getFileid() {
+        return fileid;
     }
 
-    public void setFileId(String fileId) {
-        this.fileId = fileId;
+    public void setFileid(String fileid) {
+        this.fileid = fileid;
     }
 
     public String getFileName() {

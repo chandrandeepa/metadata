@@ -1,23 +1,22 @@
 package com.metadata.vo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 /**
  * Created by Deepa on 8/17/2017.
  */
 @Entity
-@Table(name = "FILE_METADATA")
 public class FileMetadata {
 
     @Id
-    @Column(name = "METADATA_ID")
     private String metadataId;
-    @Column(name = "KEY")
     private String key;
-    @Column(name = "VALUE")
     private String value;
     @ManyToOne
-    @JoinColumn(name = "FILE_ID")
+    @JoinColumn(name = "fileid")
+    @JsonIgnore
     private FileInfo fileInfo;
 
     public String getMetadataId() {
